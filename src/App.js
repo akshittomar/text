@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
 
+import Navbar from './components/Navbar';
+import { useState } from 'react';
+import './App.css';
+import TextArea from './components/TextArea';
+import About from './components/About';
+import Feature from './components/Feature';
+import Price from './components/Price';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 function App() {
+  const [Dialog, setDialog] = useState(" ");
+  const [mode, setmode] = useState('light');
+
+  function setMessage(greet,mssg) {
+    setDialog(greet+mssg);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <>
+   <Router>
+   <div className='my-3'>
+   <Navbar  mode={mode} setmode={setmode} />
+   </div>
+   <Routes>
+    <Route exact path='/' element={ <div className='my-4 mx-3'><TextArea hi="hello" heading="ENTER TEXT HERE " alert={Dialog}  message={setMessage} mode={mode} setmode={setmode} /></div>}></Route>
+   <Route exact path='/about' element={<div className='my-5 mx-4'><About  mode={mode} setmode={setmode}/></div>} ></Route>
+   <Route exact path='/features' element={ <Feature  mode={mode} setmode={setmode}/>}></Route>
+   <Route exact path='/price' element={ <Price  mode={mode} setmode={setmode}/>}></Route>
+   
+   </Routes >
+   </Router>
+   </>
+
   );
 }
 
