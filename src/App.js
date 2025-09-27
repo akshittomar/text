@@ -1,11 +1,14 @@
 
+// Default (unnamed) import: imports the default export from a module
 import Navbar from './components/Navbar';
+// Named import: imports a specific export by name from a module
 import { useState } from 'react';
 import './App.css';
 import TextArea from './components/TextArea';
 import About from './components/About';
 import Feature from './components/Feature';
 import Price from './components/Price';
+// Named import with aliasing: 'BrowserRouter' is imported as 'Router' using 'as' keyword for shorter name usage
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 function App() {
   const [Dialog, setDialog] = useState(" ");
